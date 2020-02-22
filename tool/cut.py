@@ -32,7 +32,22 @@ def changeBound(fileName, newBound=''):
                 print(e)
             continue
         s += line
-    return s
+    if "BoundingBox" not in s:
+        output = ''
+        for line, i in enumerate(s.splitlines()):
+            if i == 1:
+                try:
+                    output += newBound
+                except UnicodeDecodeError as e:
+                    s += str(newBound)
+                except Exception as e:
+                    print(e)
+                output += line
+            else:
+                output += line
+        return output
+    else:
+        return s
 
 
 def main(fileName):
