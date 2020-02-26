@@ -27,3 +27,9 @@ source setup.sh
 ```bash
 epstool fileName.eps
 ```
+
+## PNG 
+```
+convert source.png -gravity SouthEast -background white -splice 0x0  -background
+black -splice 0x0 -fuzz 5%% -trim  +repage -chop 0x0 mks.png
+``` 
